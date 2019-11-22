@@ -69,5 +69,25 @@ namespace dotNETtask5
             public TVal Data { get; set; }
             public Node<TVal> Next { get; set; }
         }
+
+        public void Print()
+        {
+            Node<T> temp = _first;
+            int num = Count()-1;
+            Console.WriteLine("Содержание стека:");
+            while (temp != null)
+            {
+                Console.Write($"Элемент {num,-3}>>   ");
+                
+                Console.ForegroundColor = (ConsoleColor)(temp.GetHashCode() % 15 + 1);
+                Console.Write("[" + temp.Data + "]");
+                Console.ResetColor();
+                temp = temp.Next;
+                Console.WriteLine();
+                num--;
+            }
+
+            Console.WriteLine();
+        }
     }
 }
